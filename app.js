@@ -7,6 +7,7 @@ const mainList = document.getElementById('main-list')
 const formApi = document.getElementById('editForm')
 const save = document.getElementById('saveTodo')
 const editBtn = document.querySelectorAll('.btnEdit')
+const kutibTurish = document.getElementById('kutibTurish')
 
 createTodo.addEventListener('submit', async (n) => {
     n.preventDefault()
@@ -50,6 +51,7 @@ const getData = async () => {
         const ress = await daata.json()
 
         if (ress) {
+            kutibTurish.classList.add('d-none')
             ress.data.forEach((n) => {
                 const div = document.createElement('div')
                 div.innerHTML = `
@@ -188,5 +190,6 @@ const getData = async () => {
         console.log(`Xatolik: ${error.message}`)
     }
 }
+
 
 getData()
