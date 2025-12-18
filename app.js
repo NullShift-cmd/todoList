@@ -10,11 +10,26 @@ const editBtn = document.querySelectorAll('.btnEdit')
 const kutibTurish = document.getElementById('kutibTurish')
 const createBTN = document.getElementById('createBTN')
 const hechnarsa = document.getElementById('hechnarsa')
+const createBTNchasi = document.getElementById('createBTNchasi')
+
+createBTNchasi.addEventListener('click', () => {
+    createTodo.createTodoName.value = localStorage.getItem('createTodoName')
+    createTodo.createTodoDescription.value = localStorage.getItem('createTodoDes')
+})
+
+createTodo.createTodoName.addEventListener('input', () => {
+    localStorage.setItem('createTodoName', createTodoName.value)
+})
+
+createTodo.createTodoDescription.addEventListener('input', () => {
+    localStorage.setItem('createTodoDes', createTodoDescription.value)
+})
 
 createTodo.addEventListener('submit', async (n) => {
     createBTN.disabled = true
     createBTN.innerHTML = `<span class="spinner-border spinner-border-sm" aria-hidden="true"></span>
   <span role="status">Loading...</span>`
+
     n.preventDefault()
     try {
         const data = await fetch(api, {
@@ -29,7 +44,7 @@ createTodo.addEventListener('submit', async (n) => {
         })
 
         if (!data.ok) {
-            throw new Error(`Xatolik bo'ldi serverda`)
+            throw new Error(`createtodo da Xatolik bo'ldi serverda`)
         }
 
         const res = await data.json()
@@ -40,6 +55,9 @@ createTodo.addEventListener('submit', async (n) => {
     } catch (error) {
         console.log(`Xatolu : ${error.message}`)
     }
+
+    localStorage.removeItem('createTodoName')
+    localStorage.removeItem('createTodoDes')
 
     window.location.reload()
 })
@@ -57,7 +75,7 @@ const getData = async () => {
 
         if (ress) {
             kutibTurish.classList.add('d-none')
-            if(ress.data[0] == undefined) {
+            if (ress.data[0] == undefined) {
                 hechnarsa.classList.remove('d-none')
             }
             ress.data.forEach((n) => {
@@ -190,7 +208,7 @@ const getData = async () => {
 
                                 const rrss = await dattta.json()
                                 if (rrss) {
-                                     window.location.reload()
+                                    window.location.reload()
                                 }
                             } catch (error) {
                                 console.log(`Xatolik: ${error.message}`)
