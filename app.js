@@ -83,7 +83,7 @@ const getData = async () => {
             ress.data.forEach((n) => {
                 const div = document.createElement('div')
                 div.innerHTML = `
-                <div class="card my-3">
+                <div class="card my-3 shadow">
                 <div class="card-header d-flex justify-content-between align-items-center">
                               <h3 class="card-text">${n.todoName}:</h3>
                               <div class="d-flex">
