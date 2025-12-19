@@ -12,6 +12,8 @@ const createBTN = document.getElementById('createBTN')
 const hechnarsa = document.getElementById('hechnarsa')
 const createBTNchasi = document.getElementById('createBTNchasi')
 
+console.log('hello world`')
+
 createBTNchasi.addEventListener('click', () => {
     createTodo.createTodoName.value = localStorage.getItem('createTodoName')
     createTodo.createTodoDescription.value = localStorage.getItem('createTodoDes')
