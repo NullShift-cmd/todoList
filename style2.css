@@ -3,6 +3,5 @@ body {
 }
 
 .card-text {
-    color: #3f9f876a;
-    opacity: 100%;
+    color: green !important;
 }
